@@ -13,7 +13,11 @@ const useStyles = makeStyles(() =>
         },
         icon: {
             color: "white"
-        }
+        },
+        drawerPaper: {
+            width: "inherit",
+            marginTop: 64
+          }
     })
 );
 
@@ -30,8 +34,11 @@ export const DrawerComponent: React.FunctionComponent = () => {
     return (
         <Fragment>
             <Drawer
+             anchor="right"
+             classes={{ paper: classes.drawerPaper }}
                 open={openDrawer}
                 onClose={CloseDrawer}
+                
             >
                 <List>
                     <ListItem onClick={CloseDrawer}>
