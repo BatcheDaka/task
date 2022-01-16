@@ -1,8 +1,11 @@
 import { Drawer, List, ListItem, ListItemText, IconButton } from "@mui/material";
 import { createStyles, makeStyles } from "@mui/styles";
 import MenuIcon from '@mui/icons-material/Menu';
-import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from '../../context/AuthContext';
+import React, { useContext, Fragment, useState } from "react";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import LoginIcon from '@mui/icons-material/Login';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -31,6 +34,8 @@ export const DrawerComponent: React.FunctionComponent = () => {
         setOpenDrawer(false)
     }
 
+    const user = useContext(AuthContext);
+    const userIcon = user ? <>UserPage <AccountBoxIcon/></> : <>Sign In/Up <LoginIcon/></>
     return (
         <Fragment>
             <Drawer
@@ -42,18 +47,18 @@ export const DrawerComponent: React.FunctionComponent = () => {
             >
                 <List>
                     <ListItem onClick={CloseDrawer}>
-                        <ListItemText>
+                        <ListItemText >
                             <Link className={classes.link} to="/">Home</Link>
                         </ListItemText>
                     </ListItem>
                     <ListItem onClick={CloseDrawer}>
                         <ListItemText>
-                            <Link className={classes.link} to="/about">About</Link>
+                        <Link className={classes.link} to="/about"> About</Link>
                         </ListItemText>
                     </ListItem>
                     <ListItem onClick={CloseDrawer}>
                         <ListItemText>
-                            <Link className={classes.link} to="/login">Login</Link>
+                            <Link className={classes.link} to="/login">{userIcon}</Link>
                         </ListItemText>
                     </ListItem>
                     <ListItem onClick={CloseDrawer}>

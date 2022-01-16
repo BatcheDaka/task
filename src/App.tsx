@@ -8,7 +8,9 @@ import { ResetPassword } from './app/containers/ResetPassword';
 import { StartPage } from './app/containers/StartPage';
 import './styles/App.css';
 
+
 export const App: React.FunctionComponent = () => {
+  
   return (
     <div className="App">
       <BrowserRouter>
